@@ -1,0 +1,48 @@
+[gd_resource type="Resource" script_class="Conversation" load_steps=9 format=3 uid="uid://nu8l4mdev8p8"]
+
+[ext_resource type="Script" path="res://resources/resource_type/interactions_resource.gd" id="1_bnftv"]
+[ext_resource type="Script" path="res://resources/resource_type/conversation_resource.gd" id="1_ntr4w"]
+[ext_resource type="Script" path="res://resources/resource_type/interaction_option_resource.gd" id="1_t5kjc"]
+
+[sub_resource type="Resource" id="Resource_esi8k"]
+script = ExtResource("1_t5kjc")
+option_text = "\"Hey!\""
+option_flags = Array[String]([])
+next_conversation_step = 1
+
+[sub_resource type="Resource" id="Resource_3rcww"]
+script = ExtResource("1_t5kjc")
+option_text = "\"Good Morning to you!\""
+option_flags = Array[String]([])
+next_conversation_step = 1
+
+[sub_resource type="Resource" id="Resource_deg3v"]
+script = ExtResource("1_bnftv")
+step_id = "0"
+speaker = "Illmindel"
+text = "\"Hello!\""
+next_step = 1
+interactions_options = Array[ExtResource("1_t5kjc")]([SubResource("Resource_esi8k"), SubResource("Resource_3rcww")])
+
+[sub_resource type="Resource" id="Resource_hsxp7"]
+script = ExtResource("1_bnftv")
+step_id = "1"
+speaker = "Illmindel"
+text = "\"I'll see you around!\""
+next_step = 2
+interactions_options = Array[ExtResource("1_t5kjc")]([])
+
+[sub_resource type="Resource" id="Resource_1irr1"]
+script = ExtResource("1_bnftv")
+step_id = "2"
+speaker = "End"
+text = ""
+next_step = 0
+interactions_options = Array[ExtResource("1_t5kjc")]([])
+
+[resource]
+script = ExtResource("1_ntr4w")
+name = ""
+npc = ""
+interaction_steps = Array[ExtResource("1_bnftv")]([SubResource("Resource_deg3v"), SubResource("Resource_hsxp7"), SubResource("Resource_1irr1")])
+conditions = Array[Resource("res://resources/resource_type/condition_resource.gd")]([])

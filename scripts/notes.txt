@@ -1,0 +1,6 @@
+ok so
+
+click character -> query interactions -> give dialogue option
+
+interaction:
+    

@@ -1,0 +1,8 @@
+Conversations
+
+Game controller should load in the Conversations resource
+    have a list of conversations it can choose from
+
+Npc that i can click on
+    on click -> queries game controller
+        Sends back the only conversation at the moment
