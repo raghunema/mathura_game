@@ -1,26 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwao8aym2u2m7"]
+[gd_scene format=3 uid="uid://cwao8aym2u2m7"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_1uqca"]
+[ext_resource type="Script" uid="uid://f1bgk75f3g6a" path="res://scripts/main.gd" id="1_1uqca"]
 [ext_resource type="PackedScene" uid="uid://dxmlqwr0d5a7v" path="res://story_ui.tscn" id="1_dmd5w"]
 [ext_resource type="PackedScene" uid="uid://fnij3wuse14j" path="res://base_npc.tscn" id="2_lnovt"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tx8of"]
 size = Vector3(30, 0.5, 30)
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=592272923]
 script = ExtResource("1_1uqca")
 
-[node name="illmindel" parent="." instance=ExtResource("2_lnovt")]
+[node name="illmindel" parent="." unique_id=510145199 instance=ExtResource("2_lnovt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44685, -8.91672)
 
-[node name="Control" parent="." instance=ExtResource("1_dmd5w")]
+[node name="Control" parent="." unique_id=1499681271 instance=ExtResource("1_dmd5w")]
 mouse_filter = 1
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1903880175]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43604, 0)
 current = true
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=2107199009]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=916589702]
 shape = SubResource("BoxShape3D_tx8of")
