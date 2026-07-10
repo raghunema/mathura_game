@@ -21,7 +21,7 @@ func start_conversation(conv):
 
 	local_flag_engine = Flag_Engine.new()
 	#Start monitorting interactions?
-	local_flag_engine.initialize_flags(curr_conversation.flags)
+	local_flag_engine.initialize_flags(curr_conversation.local_flags)
 
 	display_interaction.emit(curr_interaction)
 
