@@ -1,5 +1,3 @@
-extends Node
-
 var conversation_db := load('res://resources/conversation_db.tres') as Conversation_DB 
 var conversation_active = false
 var curr_conversation:Conversation = null
