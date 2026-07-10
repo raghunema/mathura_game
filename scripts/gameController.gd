@@ -1,3 +1,5 @@
+extends Node
+
 var conversation_db := load('res://resources/conversation_db.tres') as Conversation_DB 
 var conversation_active = false
 var curr_conversation:Conversation = null
@@ -14,11 +16,11 @@ func process(_delta):
 
 #move this to npc script
 func request_conversation(npc_id):
-	print("in request conversation", npc_id)
+	print("in request conversation ", npc_id)
 	if not conversation_active:
 		#TO DO: find proper conversation here  and send the right one
 		curr_conversation = conversation_db.conversation_list[0]
-		
+		print(curr_conversation)
 		if curr_conversation:
 			conversation_active = true
 			start_conversation.emit(curr_conversation)

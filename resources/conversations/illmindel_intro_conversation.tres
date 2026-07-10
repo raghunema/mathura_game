@@ -1,19 +1,8 @@
 [gd_resource type="Resource" script_class="Conversation" format=3 uid="uid://nu8l4mdev8p8"]
 
-[ext_resource type="Script" uid="uid://ceer6kt303wuk" path="res://resources/resource_type/flag_engine.gd" id="1_7207n"]
 [ext_resource type="Script" uid="uid://cerea8a142n1t" path="res://resources/resource_type/interactions_resource.gd" id="1_bnftv"]
-[ext_resource type="Script" uid="uid://dgerjjdflngka" path="res://resources/resource_type/flag.gd" id="1_dr11d"]
 [ext_resource type="Script" uid="uid://dlubb3qsflham" path="res://resources/resource_type/conversation_resource.gd" id="1_ntr4w"]
 [ext_resource type="Script" uid="uid://blguxsirijn0o" path="res://resources/resource_type/interaction_option_resource.gd" id="1_t5kjc"]
-
-[sub_resource type="Resource" id="Resource_33wfw"]
-script = ExtResource("1_7207n")
-metadata/_custom_type_script = "uid://ceer6kt303wuk"
-
-[sub_resource type="Resource" id="Resource_74cbi"]
-script = ExtResource("1_dr11d")
-condition = "sad_day"
-metadata/_custom_type_script = "uid://dgerjjdflngka"
 
 [sub_resource type="Resource" id="Resource_esi8k"]
 script = ExtResource("1_t5kjc")
@@ -59,5 +48,4 @@ next_step = "end"
 [resource]
 script = ExtResource("1_ntr4w")
 interaction_steps = Array[ExtResource("1_bnftv")]([SubResource("Resource_deg3v"), SubResource("Resource_hsxp7"), SubResource("Resource_1irr1")])
-flags = Array[ExtResource("1_dr11d")]([SubResource("Resource_74cbi")])
-flag_engine = SubResource("Resource_33wfw")
+state = 1

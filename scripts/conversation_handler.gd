@@ -13,23 +13,15 @@ func _ready() -> void:
 	GameController.start_conversation.connect(start_conversation)
 
 
-#do i need this??
-# func update_iteraction_arrays(): #should add lazy updating instead of looping thorugh all interactions
-# 	closed_interactions = []
-# 	open_interactions = []
-
-# 	for i in interaction_steps:
-# 		if i.status == 'open':
-# 			open_interactions.push_back(i)
-# 		else:
-# 			closed_interactions.push_back(i)
-
 func start_conversation(conv):
+	print("in start conversation (handler)")
 	curr_conversation = conv
 	curr_interaction = curr_conversation.get_start_interaction()
 
+
+	local_flag_engine = Flag_Engine.new()
 	#Start monitorting interactions?
-	local_flag_engine.intialize_flags(curr_conversation.flags)
+	local_flag_engine.initialize_flags(curr_conversation.flags)
 
 	display_interaction.emit(curr_interaction)
 
@@ -46,5 +38,11 @@ func get_next_open_interaction(curr_option: Interaction_Options):
 	display_interaction.emit(next_interaction)
 
 func end_conversation():
+	#Clean up
+	local_flag_engine = null
+	curr_conversation = null
+	curr_interaction = null
+
+	#ui/gameController clean up
 	hide_display.emit()
 	end_conversation_sig.emit()

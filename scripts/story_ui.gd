@@ -25,7 +25,7 @@ func on_display_dialogue(interaction: Interaction):
 
 
 	var interaction_step_id = interaction.step_id
-	print("in story ui: ", interaction_step_id)
+	print("interaction step (ui) ", interaction_step_id)
 
 	var speaker = interaction.speaker
 	var text = interaction.text

@@ -1,10 +1,10 @@
 #singleton?
-extends Node
+extends RefCounted
 class_name Flag_Engine
 
 var flags: Dictionary # flag.condition -> flag
 var flag_depen_dict: Dictionary # flag -> [flag_dependency], if a flag changes, re-run if that dependency state
-var open_flagged_objs: Dictionary
+var open_flagged_objs: Array[Flagged_Obj]
 
 #set a condition to a value
 func set_flag(condition: String, val:Flag.Flag_State):
@@ -38,6 +38,9 @@ func initialize_flags(conditions: Array[String]): #Array of conidtions
 		new_flag.condition = c
 		flags[c] = new_flag
 
+	for c in conditions:
+		print(c, flags[c])
+
 func add_flag_obj_to_dict(flagged_obj: Flagged_Obj):
 	for cond in flagged_obj.flags: #string
 		if not flag_depen_dict.has(cond):
@@ -61,7 +64,7 @@ func update_depen_statuses(condition: String, val: Flag.Flag_State):
 		return 
 	
 	var affected: Array[Flagged_Obj] = flag_depen_dict[condition]
-	var opened: Array[Flagged_Obj] = []
+	#var opened: Array[Flagged_Obj] = []
 
 	for fg_obj in affected:
 		var all_met := true
@@ -74,7 +77,7 @@ func update_depen_statuses(condition: String, val: Flag.Flag_State):
 		var org_state = fg_obj.state
 		fg_obj.state = Flagged_Obj.State.OPEN if all_met else Flagged_Obj.State.LOCKED
 		if (fg_obj.state == Flagged_Obj.State.OPEN) and (org_state != Flagged_Obj.State.OPEN):
-			opened.append(fg_obj)
+			open_flagged_objs.append(fg_obj)
 
 
 
