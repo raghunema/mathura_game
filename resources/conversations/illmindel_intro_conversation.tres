@@ -47,5 +47,8 @@ next_step = "end"
 
 [resource]
 script = ExtResource("1_ntr4w")
+name = "illmindel_start_convo"
+npc = "illmindel"
 interaction_steps = Array[ExtResource("1_bnftv")]([SubResource("Resource_deg3v"), SubResource("Resource_hsxp7"), SubResource("Resource_1irr1")])
+local_flags = Array[String](["good_day", "bad_day"])
 state = 1

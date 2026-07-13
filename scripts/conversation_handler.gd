@@ -18,7 +18,6 @@ func start_conversation(conv):
 	curr_conversation = conv
 	curr_interaction = curr_conversation.get_start_interaction()
 
-
 	local_flag_engine = Flag_Engine.new()
 	#Start monitorting interactions?
 	local_flag_engine.initialize_flags(curr_conversation.local_flags)
@@ -26,16 +25,21 @@ func start_conversation(conv):
 	display_interaction.emit(curr_interaction)
 
 func get_next_open_interaction(curr_option: Interaction_Options):
-	print(curr_option.option_text)
+	print("curr interaction: ", curr_interaction)
+	print("interaction_option: ", curr_option.option_text)
+
+	var opened_inters: Array[Flagged_Obj]
 	for f in curr_option.option_flags:
-		print(f.key, f.value)
-		#curr_conversation.flag_enginge.update_interaction_statuses(f.key, f.value)
-	
+		print("curr option flag: ", f)
+		opened_inters = local_flag_engine.update_depen_statuses(f, Flag.Flag_State.OPEN)
+
 	print("getting next open step")
-	var next_interaction = curr_conversation.get_next_open_interaction(curr_interaction.next_step)
-	curr_interaction = next_interaction
+	if curr_interaction.next_step != null and int(curr_interaction.next_step) != -1:
+		var next_step = int(curr_interaction.next_step)
+		curr_interaction = curr_conversation.interaction_steps[next_step]
+		
 	print("conversation handler: ", curr_interaction)
-	display_interaction.emit(next_interaction)
+	display_interaction.emit(curr_interaction)
 
 func end_conversation():
 	#Clean up

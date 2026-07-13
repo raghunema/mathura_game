@@ -16,11 +16,11 @@ func process(_delta):
 
 #move this to npc script
 func request_conversation(npc_id):
-	print("in request conversation ", npc_id)
+	print("requesting conversationw with: ", npc_id)
 	if not conversation_active:
 		#TO DO: find proper conversation here  and send the right one
 		curr_conversation = conversation_db.conversation_list[0]
-		print(curr_conversation)
+		print("starting conversation:", curr_conversation.name)
 		if curr_conversation:
 			conversation_active = true
 			start_conversation.emit(curr_conversation)
