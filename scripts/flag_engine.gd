@@ -38,6 +38,7 @@ func initialize_flags(conditions: Array[String]): #Array of conidtions
 		new_flag.condition = c
 		flags[c] = new_flag
 
+	print("(flag_engine) printing flags during intialize")
 	for c in conditions:
 		print(c, flags[c])
 
@@ -49,11 +50,12 @@ func add_flag_obj_to_dict(flagged_obj: Flagged_Obj):
 		
 		flag_depen_dict[cond].append(flagged_obj)
 
-func initialize_dict(fg_objs: Array[Flagged_Obj]):
+#need to pass in variant for extended flagged_objs
+func initialize_dict(flagged_objs: Array[Variant]) -> void:
 	#we could duoble index this array based on if objs are locked/open/completed
 
-	for fg_obj in fg_objs:
-		add_flag_obj_to_dict(fg_obj)
+	for fg_obj in flagged_objs:
+		add_flag_obj_to_dict(fg_obj as Flagged_Obj)
 	
 
 #set flag and update flagged_objs based

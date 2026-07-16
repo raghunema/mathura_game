@@ -16,5 +16,5 @@ func _process(delta):
 
 func _input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
-		print('npc clicked ', name)
+		print('(npc) npc clicked ', name)
 		GameController.request_conversation(name)

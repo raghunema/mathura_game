@@ -7,5 +7,5 @@ class_name Interaction
 @export var text:String
 @export var next_step:String
 
-@export var interactions_options:Array[Interaction_Options]
+@export var interactions_options:Array[Interaction_Option]
  

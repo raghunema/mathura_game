@@ -8,7 +8,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("in story_ui @ready:", ConversationHandler)
+	print("(story_ui: @ready)", ConversationHandler)
 	hide_dialogue()
 	ConversationHandler.display_interaction.connect(on_display_dialogue)
 	ConversationHandler.hide_display.connect(hide_dialogue)
@@ -25,7 +25,7 @@ func on_display_dialogue(interaction: Interaction):
 
 
 	var interaction_step_id = interaction.step_id
-	print("interaction step (ui) ", interaction_step_id)
+	print("(story_ui) interaction step", interaction_step_id)
 
 	var speaker = interaction.speaker
 	var text = interaction.text
@@ -47,7 +47,11 @@ func on_display_dialogue(interaction: Interaction):
 	
 	show_dialogue()
 
-func _on_choice_press(interaction_option):
+func _on_choice_press(interaction_option): 
+	if typeof(interaction_option) == TYPE_STRING and interaction_option == 'end':
+		ConversationHandler.end_conversation()
+		return
+
 	ConversationHandler.get_next_open_interaction(interaction_option)
 
 func show_dialogue():

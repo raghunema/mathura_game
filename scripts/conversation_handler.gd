@@ -14,31 +14,45 @@ func _ready() -> void:
 
 
 func start_conversation(conv):
-	print("in start conversation (handler)")
+	print("(handler) in start conversation")
 	curr_conversation = conv
 	curr_interaction = curr_conversation.get_start_interaction()
 
 	local_flag_engine = Flag_Engine.new()
 	#Start monitorting interactions?
 	local_flag_engine.initialize_flags(curr_conversation.local_flags)
+	local_flag_engine.initialize_dict(curr_conversation.interaction_steps)
 
 	display_interaction.emit(curr_interaction)
 
-func get_next_open_interaction(curr_option: Interaction_Options):
-	print("curr interaction: ", curr_interaction)
-	print("interaction_option: ", curr_option.option_text)
+func get_next_open_interaction(curr_option: Interaction_Option):
+	print("(handler) curr interaction: ", curr_interaction)
+	print("(handler) interaction_option: ", curr_option.option_text)
+	print("(handler)", curr_option.option_flags)
 
-	var opened_inters: Array[Flagged_Obj]
+	var opened_inters: Array[Flagged_Obj] = []
 	for f in curr_option.option_flags:
 		print("curr option flag: ", f)
-		opened_inters = local_flag_engine.update_depen_statuses(f, Flag.Flag_State.OPEN)
+		if curr_option.option_flags[f] == true:
+			opened_inters = local_flag_engine.update_depen_statuses(f, Flag.Flag_State.OPEN)
+		else: 
+			opened_inters = local_flag_engine.update_depen_statuses(f, Flag.Flag_State.CLOSED)
 
-	print("getting next open step")
+	print("(handler) getting next open step")
 	if curr_interaction.next_step != null and int(curr_interaction.next_step) != -1:
 		var next_step = int(curr_interaction.next_step)
 		curr_interaction = curr_conversation.interaction_steps[next_step]
 		
-	print("conversation handler: ", curr_interaction)
+	if opened_inters.size() > 0:
+		var interaction_updated = false
+		for i in opened_inters:
+			if !interaction_updated:
+				curr_interaction = i
+				interaction_updated = true
+			elif curr_interaction.step_id > i.step_id:
+				curr_interaction = i
+
+	#print("(handler)", curr_interaction.text)
 	display_interaction.emit(curr_interaction)
 
 func end_conversation():

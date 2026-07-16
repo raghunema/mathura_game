@@ -28,6 +28,9 @@ metadata/_custom_type_script = "uid://blguxsirijn0o"
 [sub_resource type="Resource" id="Resource_7207n"]
 script = ExtResource("1_t5kjc")
 option_text = "Unfortunately, no"
+option_flags = {
+"bad_day": true
+}
 metadata/_custom_type_script = "uid://blguxsirijn0o"
 
 [sub_resource type="Resource" id="Resource_hsxp7"]
@@ -35,7 +38,7 @@ script = ExtResource("1_bnftv")
 step_id = "1"
 speaker = "Illmindel"
 text = "Did you have a good day?"
-next_step = "\"\""
+next_step = "-1"
 interactions_options = Array[ExtResource("1_t5kjc")]([SubResource("Resource_dr11d"), SubResource("Resource_7207n")])
 
 [sub_resource type="Resource" id="Resource_1irr1"]
@@ -44,11 +47,12 @@ step_id = "2"
 speaker = "Illmindel"
 text = "I'm sorry to hear that"
 next_step = "end"
+flags = Array[String](["bad_day"])
 
 [resource]
 script = ExtResource("1_ntr4w")
 name = "illmindel_start_convo"
 npc = "illmindel"
 interaction_steps = Array[ExtResource("1_bnftv")]([SubResource("Resource_deg3v"), SubResource("Resource_hsxp7"), SubResource("Resource_1irr1")])
-local_flags = Array[String](["good_day", "bad_day"])
+local_flags = Array[String](["bad_day"])
 state = 1
