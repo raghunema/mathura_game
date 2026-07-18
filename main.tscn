@@ -7,20 +7,20 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_tx8of"]
 size = Vector3(30, 0.5, 30)
 
-[node name="Main" type="Node3D" unique_id=592272923]
+[node name="Main" type="Node3D" unique_id=308877190]
 script = ExtResource("1_1uqca")
 
-[node name="illmindel" parent="." unique_id=510145199 instance=ExtResource("2_lnovt")]
+[node name="illmindel" parent="." unique_id=1775286768 instance=ExtResource("2_lnovt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44685, -8.91672)
 
-[node name="Control" parent="." unique_id=1499681271 instance=ExtResource("1_dmd5w")]
+[node name="Control" parent="." unique_id=1877589096 instance=ExtResource("1_dmd5w")]
 mouse_filter = 1
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1903880175]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=335256740]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43604, 0)
 current = true
 
-[node name="Floor" type="StaticBody3D" parent="." unique_id=2107199009]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1021110646]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=916589702]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=512507085]
 shape = SubResource("BoxShape3D_tx8of")

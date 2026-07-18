@@ -22,4 +22,4 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameController="*res://scripts/gameController.gd"
-ConversationHandler="*uid://nmern1vgk2cr"
+ConversationHandler="*uid://r3xtqsq0ojmm"
