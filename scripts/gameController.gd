@@ -19,7 +19,7 @@ func request_conversation(npc_id):
 	print("requesting conversationw with: ", npc_id)
 	if not conversation_active:
 		#TO DO: find proper conversation here  and send the right one
-		curr_conversation = conversation_db.conversation_list[0]
+		curr_conversation = conversation_db.conversation_list[1]
 		print("starting conversation:", curr_conversation.name)
 		if curr_conversation:
 			conversation_active = true

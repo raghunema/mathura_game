@@ -32,11 +32,13 @@ func on_display_dialogue(interaction: Interaction):
 	var options = interaction.interactions_options
 
 	if options.size() > 0: 
-
 		for opt in options:
 			var opt_button = Button.new()
 			opt_button.text = opt.option_text
-			opt_button.pressed.connect(_on_choice_press.bind(opt))
+			if interaction.next_step == 'end':
+				opt_button.pressed.connect(_on_choice_press.bind(interaction.next_step))
+			else:
+				opt_button.pressed.connect(_on_choice_press.bind(opt))
 			optionsContainer.add_child(opt_button)
 	else:
 		nextButton.show()

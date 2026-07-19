@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="Conversation" format=3 uid="uid://chsf34kq1mrxv"]
+
+[ext_resource type="Script" uid="uid://5gnb0l61o3i7" path="res://resources/resource_type/interactions_resource.gd" id="1_1am4g"]
+[ext_resource type="Script" uid="uid://hwaw6pd8f4q6" path="res://resources/resource_type/interaction_option_resource.gd" id="2_5k0xr"]
+[ext_resource type="Script" uid="uid://0o5bpiohb6xx" path="res://resources/resource_type/conversation_resource.gd" id="2_35oqr"]
+
+[sub_resource type="Resource" id="Resource_1bnlc"]
+script = ExtResource("2_5k0xr")
+option_text = "I did! The one with the eye patch seemed prety suspicuos to me!"
+option_flags = {
+"merchant_bad_impression": true
+}
+metadata/_custom_type_script = "uid://hwaw6pd8f4q6"
+
+[sub_resource type="Resource" id="Resource_ucenm"]
+script = ExtResource("2_5k0xr")
+option_text = "Yes! Good to have some new faces around, won't you say?"
+option_flags = {
+"merchant_neutral_impression": true
+}
+metadata/_custom_type_script = "uid://hwaw6pd8f4q6"
+
+[sub_resource type="Resource" id="Resource_h5we1"]
+script = ExtResource("1_1am4g")
+step_id = "1"
+speaker = "Illmindel"
+text = "Did you see the crew come out of that merchant ship?"
+next_step = "end"
+interactions_options = Array[ExtResource("2_5k0xr")]([SubResource("Resource_1bnlc"), SubResource("Resource_ucenm")])
+metadata/_custom_type_script = "uid://5gnb0l61o3i7"
+
+[resource]
+script = ExtResource("2_35oqr")
+name = "second"
+npc = "illmindel"
+interaction_steps = Array[ExtResource("1_1am4g")]([SubResource("Resource_h5we1")])
+local_flags = Array[String](["merchant_neutral_impression", "merchant_bad_impression"])
+metadata/_custom_type_script = "uid://0o5bpiohb6xx"

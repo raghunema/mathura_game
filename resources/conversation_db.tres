@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="Conversation_DB" load_steps=3 format=3 uid="uid://bywaupsebvah2"]
+[gd_resource type="Resource" script_class="Conversation_DB" format=3 uid="uid://bywaupsebvah2"]
 
+[ext_resource type="Script" uid="uid://0o5bpiohb6xx" path="res://resources/resource_type/conversation_resource.gd" id="1_10lln"]
 [ext_resource type="Resource" uid="uid://nu8l4mdev8p8" path="res://resources/conversations/illmindel_intro_conversation.tres" id="1_brq8r"]
-[ext_resource type="Script" path="res://resources/resource_type/conversation_db.gd" id="1_xnij7"]
+[ext_resource type="Script" uid="uid://dc36ov86p5irs" path="res://resources/resource_type/conversation_db.gd" id="1_xnij7"]
+[ext_resource type="Resource" uid="uid://chsf34kq1mrxv" path="res://resources/conversations/illmindel_second_conversation.tres" id="3_l7lmn"]
 
 [resource]
 script = ExtResource("1_xnij7")
-conversation_list = Array[Resource("res://resources/resource_type/conversation_resource.gd")]([ExtResource("1_brq8r")])
-conv_dict = {}
+conversation_list = Array[ExtResource("1_10lln")]([ExtResource("1_brq8r"), ExtResource("3_l7lmn")])
