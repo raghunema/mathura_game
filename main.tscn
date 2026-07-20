@@ -3,24 +3,24 @@
 [ext_resource type="Script" uid="uid://f1bgk75f3g6a" path="res://scripts/main.gd" id="1_1uqca"]
 [ext_resource type="PackedScene" uid="uid://dxmlqwr0d5a7v" path="res://story_ui.tscn" id="1_dmd5w"]
 [ext_resource type="PackedScene" uid="uid://fnij3wuse14j" path="res://base_npc.tscn" id="2_lnovt"]
+[ext_resource type="PackedScene" uid="uid://hd705jpasad5" path="res://player.tscn" id="4_1bvp3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tx8of"]
-size = Vector3(30, 0.5, 30)
+size = Vector3(200, 0.5, 200)
 
 [node name="Main" type="Node3D" unique_id=308877190]
 script = ExtResource("1_1uqca")
 
 [node name="illmindel" parent="." unique_id=1775286768 instance=ExtResource("2_lnovt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.44685, -8.91672)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2331954, -8.91672)
 
 [node name="Control" parent="." unique_id=1877589096 instance=ExtResource("1_dmd5w")]
 mouse_filter = 1
-
-[node name="Camera3D" type="Camera3D" parent="." unique_id=335256740]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43604, 0)
-current = true
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1021110646]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=512507085]
 shape = SubResource("BoxShape3D_tx8of")
+
+[node name="Player" parent="." unique_id=318221200 instance=ExtResource("4_1bvp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.289606, 0)
