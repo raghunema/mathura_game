@@ -60,28 +60,39 @@ func initialize_dict(flagged_objs: Array[Variant]) -> void:
 
 #set flag and update flagged_objs based
 func update_depen_statuses(condition: String, val: Flag.Flag_State):
-	set_flag(condition, val)
-
-	if not flag_depen_dict.has(condition):
-		return 
+	set_flag(condition, val) 
 	
-	var affected: Array[Flagged_Obj] = flag_depen_dict[condition]
 	var opened: Array[Flagged_Obj] = []
+	var closed: Array[Flagged_Obj] = []
+
+	#If no flags affected, return now (base case)
+	if not flag_depen_dict.has(condition):
+		return {"opened": opened, "closed": closed}
+
+
+	#All flagged_objects that flag affects (condition has to exist in dict)
+	var affected: Array[Flagged_Obj] = flag_depen_dict[condition]
 
 	for fg_obj in affected:
 		var all_met := true
 
 		for cond in fg_obj.flags: 
+			#If that flagged_object has a false - move on
 			if check_flag(cond, Flag.Flag_State.CLOSED):
 				all_met = false
 				break
 
 		var org_state = fg_obj.state
+		#Update Flagged_Object's state
 		fg_obj.state = Flagged_Obj.State.OPEN if all_met else Flagged_Obj.State.LOCKED
+		
+		#It was opened if the previous state was not already opened
 		if (fg_obj.state == Flagged_Obj.State.OPEN) and (org_state != Flagged_Obj.State.OPEN):
 			#open_flagged_objs.append(fg_obj)
 			opened.append(fg_obj)
+		elif (fg_obj.state == Flagged_Obj.State.LOCKED) and (org_state != Flagged_Obj.State.LOCKED):
+			closed.append(fg_obj)
 
-	return opened
+	return {"opened": opened, "closed": closed}
 
 		
