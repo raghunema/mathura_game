@@ -62,6 +62,7 @@ func get_next_open_interaction(curr_option: Interaction_Option):
 		var next_step = int(curr_interaction.next_step)
 		curr_interaction = curr_conversation.interaction_steps[next_step]
 
+
 	#Explicitly over writing a predefined step if an interaction opens up	
 	#If we need to figure what the next correct opened interaction will be 
 	if opened_inters.size() > 0:

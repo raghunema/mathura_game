@@ -8,6 +8,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_tx8of"]
 size = Vector3(200, 0.5, 200)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_1bvp3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lquwl"]
+
 [node name="Main" type="Node3D" unique_id=308877190]
 script = ExtResource("1_1uqca")
 
@@ -24,3 +28,12 @@ shape = SubResource("BoxShape3D_tx8of")
 
 [node name="Player" parent="." unique_id=318221200 instance=ExtResource("4_1bvp3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.289606, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=34112186]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6614094, 1.4286108, -8.5205555)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=830471136]
+shape = SubResource("BoxShape3D_1bvp3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D" unique_id=1761021943]
+mesh = SubResource("BoxMesh_lquwl")

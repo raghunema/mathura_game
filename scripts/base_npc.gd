@@ -6,7 +6,8 @@ class_name Base_NPC
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	print("Input pickable:", input_ray_pickable)
+	print("Collision Layer:", collision_layer)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
